@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+	function send(){
+	//alert("fhf");
+	answs = document.getElementById("name").value;
+		for(i=1; true; i++){
+		if ( document.getElementById("task"+i) == null){break;}
+		ans = document.getElementById("task"+i).value;
+		answs += '\n' + ans;
+	}
+	alert(answs);
+	//alert(i);
+	
+	SendRequest("Post", "/resTest.py", answs, alert("sended"));
+	}
+	</script>
+	<script src="files/ajax.js" type="text/javascript"></script>
+	
+</head>
+<body>
+	<div>
+	Name:
+	<input id="name">
+	</div>
+	
+	<div id="test" >
+		test...
