@@ -3,7 +3,22 @@ import os
 import sys
 import _pickle as pkl
 
-WORK_DIRECTORY = r'/sdcard/user/serv/test/wrkdir'
+WORK_DIRECTORY = r'/sdcard/user/serv/tests/wrkdir'
+
+#-----statistics operating-----
+def addStatRec(record):
+    if (not os.path.isfile("stat.pkl")):
+        f = open("stat.pkl", "wb")
+        pkl.dump(["format=my"], f)
+        f.close()
+    f = open("stat.pkl", "rb")
+    recs = pkl.load(f)
+    f.close()
+    f = open("stat.pkl", "wb")
+    recs.append(record)
+    pkl.dump(recs, f)
+    f.close()
+
 
 #-------test operating---------
 def saveTest(tst):
@@ -37,8 +52,20 @@ def getAnsws():
             answs.append(i[2])
     return answs
 
-def checkTest():
+def checkTest(data):
     print("cT")
+    result = data.split("\n")
+    name = result.pop(0)
+    trAns = getAnsws()
+    errs=0; points =0
+    if len(result) != len(trAns):
+        raise ValueError;
+    for i in range(len(result)):
+        if result[i] == trAns[i]:
+            points +=1
+        else:
+            errs += 1
+    addStatRec((name, points, errs))
 
 def makeTest():
     tfile = open('files/pageHead.html')
@@ -51,28 +78,22 @@ def makeTest():
     TASK = tfile.read()
     tfile.close()
 
-    f = open('test.t')
+    #f = open('test.t')
     #TODO: choice test
+    qwsts = getQwsts()
     print("generating test file")
     html = HEAD
     isQwst = False
     i=0
-    for line in f:
-        #print("log:", line)
-        if line == "Qwst:\n":
-            isQwst = True
-            i = i + 1
-        elif line == "Answ:\n":
-            isQwst=False
-        else:
-            if isQwst:
-                html += 
-TASK.format(qwst=line, i
+    for q in qwsts:
+        i += 1
+        html += TASK.format(qwst=q, i=i)
     html+= END
-    f.close()
+    #f.close()
 
     outf = open("out.html", "w")
     outf.write(html)
+    outf.close()
 
 #-------net operating----------
 
@@ -137,7 +158,7 @@ def createAnsw(ddata):
     print((directory, content))
 
     if (directory=='/resTest.py'):
-      resTest(content)
+      checkTest(content)
     ans = "HTTP/1.1 200 OK"
     return ans.encode('utf-8')
 
@@ -184,40 +205,8 @@ def resTest(cont):
     answs = cont.split('\n')
     for i in answs:
        print(i)
-
-def makeTest():
-    tfile = open('files/pageHead.html')
-    HEAD= tfile.read()
-    tfile.close()
-    tfile = open('files/pageEnd.html')
-    END = tfile.read()
-    tfile.close()
-    tfile = open('files/task.html')
-    TASK = tfile.read()
-    tfile.close()
-
-    f = open('test.t')
-    #TODO: choice test
-    print("generating test file")
-    html = HEAD
-    isQwst = False
-    i=0
-    for line in f:
-        #print("log:", line)
-        if line == "Qwst:\n":
-            isQwst = True
-            i = i + 1
-        elif line == "Answ:\n":
-            isQwst=False
-        else:
-            if isQwst:
-                html += TASK.format(qwst=line, i=i)
-    html+= END
-    f.close()
-
-    outf = open("out.html", "w")
-    outf.write(html)
-    return html  #won't be used
+    name = answs.pop(0)
+    #res = checkTest(answs)
 
 '''========CODE========='''
 
