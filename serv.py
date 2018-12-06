@@ -19,17 +19,29 @@ def addStatRec(record):
     pkl.dump(recs, f)
     f.close()
 
+def loadStat():
+    if (not os.path.isfile("stat.pkl")):
+        f = open("stat.pkl", "wb")
+        pkl.dump(["format=my"], f)
+        f.close()
+    f = open("stat.pkl", "rb")
+    stat = pkl.load(f)
+    f.close()
+    return stat
 
 #-------test operating---------
 def saveTest(tst):
     f = open("test.pkl", 'wb')
     pkl.dump(tst, f)
+    f.close()
 
 def loadTest():
     if (not os.path.isfile("test.pkl")):
         saveDefaultTest()
     f = open("test.pkl", "rb")
-    return pkl.load(f)
+    test = pkl.load(f)
+    f.close()
+    return test
 
 def saveDefaultTest():
     test = [["std", "qvst1", "answ1"],
