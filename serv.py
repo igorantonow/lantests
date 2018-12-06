@@ -3,7 +3,7 @@ import os
 import sys
 import _pickle as pkl
 
-WORK_DIRECTORY = r'/sdcard/user/serv/tests/wrkdir'
+WORK_DIRECTORY = r'/sdcard/user/tests/wrkdir'
 
 #-----statistics operating-----
 def addStatRec(record):
@@ -30,6 +30,14 @@ def loadStat():
     return stat
 
 #-------test operating---------
+def getLastTestRes(name):
+    stat = loadStat()
+    stat.reverse()
+    for record in stat:
+        if record[0] == name:
+            return record
+    raise ValueError("cannot find records about "+name)
+
 def saveTest(tst):
     f = open("test.pkl", 'wb')
     pkl.dump(tst, f)
@@ -225,6 +233,7 @@ def resTest(cont):
 os.chdir(WORK_DIRECTORY)
 
 print(getQwsts())
+print(getLastTestRes('Name'))
 
 sock = socket.socket()
 sock.bind(('', 8080))
