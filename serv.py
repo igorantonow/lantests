@@ -31,6 +31,7 @@ def loadStat():
 
 #-------test operating---------
 def getLastTestRes(name):
+    print("getLastTestRes("+name+')')
     stat = loadStat()
     stat.reverse()
     for record in stat:
@@ -194,10 +195,16 @@ def createAnsw(ddata):
   if file == 'test.py':
       makeTest()
       file='out.html'
-
+  if file.count("getLastTestRes")>0:
+      content = str(getLastTestRes(file.split("=")[1]))
+      content = content.encode('utf-8')
+  else:
+      content = None
+  
   print('Sending file:', file)
   try:
-    content=loadcontent(file)
+    if content==None:
+      content=loadcontent(file)
   except FileNotFoundError as e:
     print(e)
     ans='''HTTP/1.1 404 NOT FOUND'''

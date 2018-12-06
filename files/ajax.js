@@ -43,17 +43,17 @@ r_path, r_args, r_handler)
     //Если обмен данными завершен 
     if (Request.readyState == 4) {
       if (Request.status == 200) {
-        PrintStatus('###END###');
+        //PrintStatus('###END###');
         //Передаем управление 
         //обработчику пользователя 
         r_handler(Request);
       } else { 
         alert('Error! ');
-        PrintStatus('ERROR!');
+        //PrintStatus('ERROR!');
         errState=false;
       }
     } else { 
-      PrintStatus('loading...');
+      //PrintStatus('loading...');
     }
     return errState;
   }
@@ -77,11 +77,13 @@ r_path, r_args, r_handler)
 
 
 function ReadFile(filename, container) {
+
  //Создаем функцию обработчик
  var Handler = function(Request) {
+ 
  document.getElementById(container).innerHTML = Request.responseText;
  } 
+ 
  //Отправляем запрос 
- SendRequest("GET",filename,"",Handler); 
+ SendRequest("GET",filename, "", Handler);
 } 
-
