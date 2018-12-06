@@ -57,14 +57,14 @@ def checkTest(data):
     result = data.split("\n")
     name = result.pop(0)
     trAns = getAnsws()
-    errs=0; points =0
+    errs=[]; points =0
     if len(result) != len(trAns):
         raise ValueError;
     for i in range(len(result)):
         if result[i] == trAns[i]:
             points +=1
         else:
-            errs += 1
+            errs.append(i)
     addStatRec((name, points, errs))
 
 def makeTest():
