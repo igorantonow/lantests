@@ -29,7 +29,6 @@ def loadStat():
     f.close()
     return stat
 
-#-------test operating---------
 def getLastTestRes(name):
     print("getLastTestRes("+name+')')
     stat = loadStat()
@@ -39,6 +38,16 @@ def getLastTestRes(name):
             return record
     raise ValueError("cannot find records about "+name)
 
+def oformResTest(name):
+    res = getLastTestRes(name)
+    mistakes = [ i+1 for i in res[2] ]
+    text = "Congratulations! You have "+\
+           str(res[1]*100//len(getAnsws()))+\
+           "% correct answers. Your mistakes:"+\
+           str(mistakes)
+    return text.encode("utf-8")
+
+#-------test operating---------
 def saveTest(tst):
     f = open("test.pkl", 'wb')
     pkl.dump(tst, f)
@@ -196,8 +205,9 @@ def createAnsw(ddata):
       makeTest()
       file='out.html'
   if file.count("getLastTestRes")>0:
-      content = str(getLastTestRes(file.split("=")[1]))
-      content = content.encode('utf-8')
+      #content = str(getLastTestRes(file.split("=")[1]))
+      #content = content.encode('utf-8')
+      content = oformResTest(file.split("=")[1])
   else:
       content = None
   
