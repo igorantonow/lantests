@@ -195,7 +195,7 @@ connection: close
 
 
 '''========CODE========='''
-def main():
+def run():
 	os.chdir(WORK_DIRECTORY)
 	
 	print(getQwsts())
@@ -231,4 +231,4 @@ def main():
 	print('server closed')
 	
 if __name__=="__main__":
-    main()
+    run()
