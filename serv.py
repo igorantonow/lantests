@@ -2,11 +2,12 @@ import socket
 import os
 import sys
 import _pickle as pkl
+import statistic as stat
 
 WORK_DIRECTORY = r'/sdcard/user/tests/wrkdir'
 
 #-----statistics operating-----
-def addStatRec(record):
+'''def addStatRec(record):
     if (not os.path.isfile("stat.pkl")):
         f = open("stat.pkl", "wb")
         pkl.dump(["format=my"], f)
@@ -46,7 +47,7 @@ def oformResTest(name):
            "% correct answers. Your mistakes:"+\
            str(mistakes)
     return text.encode("utf-8")
-
+'''
 #-------test operating---------
 def saveTest(tst):
     f = open("test.pkl", 'wb')
@@ -83,7 +84,7 @@ def getAnsws():
     return answs
 
 def checkTest(data):
-    print("cT")
+    #print("cT")
     result = data.split("\n")
     name = result.pop(0)
     trAns = getAnsws()
@@ -95,7 +96,7 @@ def checkTest(data):
             points +=1
         else:
             errs.append(i)
-    addStatRec((name, points, errs))
+    stat.addStatRec((name, points, errs))
 
 def makeTest():
     tfile = open('files/pageHead.html')
@@ -207,7 +208,7 @@ def createAnsw(ddata):
   if file.count("getLastTestRes")>0:
       #content = str(getLastTestRes(file.split("=")[1]))
       #content = content.encode('utf-8')
-      content = oformResTest(file.split("=")[1])
+      content = stat.oformResTest(file.split("=")[1])
   else:
       content = None
   
@@ -250,7 +251,7 @@ def main():
 	os.chdir(WORK_DIRECTORY)
 	
 	print(getQwsts())
-	print(getLastTestRes('Name'))
+	print(stat.getLastTestRes('Name'))
 	
 	sock = socket.socket()
 	sock.bind(('', 8080))
