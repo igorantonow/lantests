@@ -3,9 +3,10 @@ import os
 import sys
 import _pickle as pkl
 import statistic as stat
+import tests
 
 WORK_DIRECTORY = r'/sdcard/user/tests/wrkdir'
-
+'''
 #-------test operating---------
 def saveTest(tst):
     f = open("test.pkl", 'wb')
@@ -83,7 +84,7 @@ def makeTest():
     outf = open("out.html", "w")
     outf.write(html)
     outf.close()
-
+'''
 #-------net operating----------
 
 def loadcontent(file):
@@ -147,7 +148,7 @@ def createAnsw(ddata):
     print((directory, content))
 
     if (directory=='/resTest.py'):
-      checkTest(content)
+      tests.checkTest(content)
     ans = "HTTP/1.1 200 OK"
     return ans.encode('utf-8')
 
@@ -161,7 +162,7 @@ def createAnsw(ddata):
   file=ddata.partition(' HTTP/1.1')[0][5:]
 
   if file == 'test.py':
-      makeTest()
+      tests.makeTest()
       file='out.html'
   if file.count("getLastTestRes")>0:
       #content = str(getLastTestRes(file.split("=")[1]))
@@ -198,7 +199,7 @@ connection: close
 def run():
 	os.chdir(WORK_DIRECTORY)
 	
-	print(getQwsts())
+	print(tests.getQwsts())
 	print(stat.getLastTestRes('Name'))
 	
 	sock = socket.socket()

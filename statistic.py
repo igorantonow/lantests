@@ -3,6 +3,7 @@ import os
 import sys
 import _pickle as pkl
 import serv
+import tests
 
 def addStatRec(record):
     if (not os.path.isfile("stat.pkl")):
@@ -40,7 +41,7 @@ def oformResTest(name):
     res = getLastTestRes(name)
     mistakes = [ i+1 for i in res[2] ]
     text = "Congratulations! You have "+\
-           str(res[1]*100//len(serv.getAnsws()))+\
+           str(res[1]*100//len(tests.getAnsws()))+\
            "% correct answers. Your mistakes:"+\
            str(mistakes)
     return text.encode("utf-8")
