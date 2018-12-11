@@ -246,37 +246,40 @@ def resTest(cont):
     #res = checkTest(answs)
 
 '''========CODE========='''
-
-os.chdir(WORK_DIRECTORY)
-
-print(getQwsts())
-print(getLastTestRes('Name'))
-
-sock = socket.socket()
-sock.bind(('', 8080))
-
-while True:
-  print("server is working")
-  sock.listen(2)
-  conn, addr = sock.accept()
-
-  print ('connected:', addr)
-
-
-  #data = conn.recv(1024)
-  #ddata=data.decode('utf-8')
-
-  ddata = getData(conn)
-  #warning: next expression isn't good
-  if 0 <= ddata.find('exit'):
-    print('exit')
-    conn.close()
-    break
-  ans = createAnsw(ddata)
-  conn.sendall(ans)
-
-  print('page send, conn resetting...')
-  print('_____________')
-  conn.close()
-
-print('server closed')
+def main():
+	os.chdir(WORK_DIRECTORY)
+	
+	print(getQwsts())
+	print(getLastTestRes('Name'))
+	
+	sock = socket.socket()
+	sock.bind(('', 8080))
+	
+	while True:
+	  print("server is working")
+	  sock.listen(2)
+	  conn, addr = sock.accept()
+	
+	  print ('connected:', addr)
+	
+	
+	  #data = conn.recv(1024)
+	  #ddata=data.decode('utf-8')
+	
+	  ddata = getData(conn)
+	  #warning: next expression isn't good
+	  if 0 <= ddata.find('exit'):
+	    print('exit')
+	    conn.close()
+	    break
+	  ans = createAnsw(ddata)
+	  conn.sendall(ans)
+	
+	  print('page send, conn resetting...')
+	  print('_____________')
+	  conn.close()
+	
+	print('server closed')
+	
+if __name__=="__main__":
+    main()
