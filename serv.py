@@ -194,16 +194,6 @@ connection: close
   return reqv
 
 
-'''=====DIFFERENCE PART FOR TESTING======'''
-
-def resTest(cont):
-    print('---TEST RES---')
-    answs = cont.split('\n')
-    for i in answs:
-       print(i)
-    name = answs.pop(0)
-    #res = checkTest(answs)
-
 '''========CODE========='''
 def main():
 	os.chdir(WORK_DIRECTORY)
