@@ -122,7 +122,7 @@ def run():
 	os.chdir(WORK_DIRECTORY)
 	
 	print(tests.getQwsts())
-	print(stat.getLastTestRes('Name'))
+	#print(stat.getLastTestRes('Name'))
 	
 	sock = socket.socket()
 	sock.bind(('', 8080))

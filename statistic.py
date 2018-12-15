@@ -46,3 +46,10 @@ def oformResTest(name):
            str(mistakes)
     return text.encode("utf-8")
 
+def _printStat():
+    stat = loadStat()
+    for i in stat:
+        print(i)
+        
+if __name__=="__main__":
+    _printStat()
