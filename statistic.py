@@ -8,7 +8,7 @@ import tests
 def addStatRec(record):
     if (not os.path.isfile("stat.pkl")):
         f = open("stat.pkl", "wb")
-        pkl.dump(["format=my"], f)
+        pkl.dump([("fict", 10, [3,4])], f)
         f.close()
     f = open("stat.pkl", "rb")
     recs = pkl.load(f)
@@ -21,7 +21,7 @@ def addStatRec(record):
 def loadStat():
     if (not os.path.isfile("stat.pkl")):
         f = open("stat.pkl", "wb")
-        pkl.dump(["format=my"], f)
+        pkl.dump([("fict", 10, [3,4])], f)
         f.close()
     f = open("stat.pkl", "rb")
     stat = pkl.load(f)
@@ -51,5 +51,23 @@ def _printStat():
     for i in stat:
         print(i)
         
+def createStatPage():
+    f = open("files/stat.html")
+    html = f.read()
+    f.close()
+    f = open("files/statItem.html")
+    item = f.read()
+    f. close()
+    table = ""
+    for i in loadStat():
+        mistakes = str([j+1 for j in i[2]])
+        tr = item.format(name=i[0], pers=i[1], wrong=mistakes)
+        table += tr
+    html = html.format(table = table)
+    f = open("pages/stat.html", "w")
+    f.write(html)
+    f.close()
+        
 if __name__=="__main__":
     _printStat()
+    createStatPage()
