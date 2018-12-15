@@ -17,6 +17,7 @@ def addStatRec(record):
     recs.append(record)
     pkl.dump(recs, f)
     f.close()
+    createStatPage()
 
 def loadStat():
     if (not os.path.isfile("stat.pkl")):
@@ -61,7 +62,7 @@ def createStatPage():
     table = ""
     for i in loadStat():
         mistakes = str([j+1 for j in i[2]])
-        tr = item.format(name=i[0], pers=i[1], wrong=mistakes)
+        tr = item.format(name=i[0], right=i[1], wrong=mistakes)
         table += tr
     html = html.format(table = table)
     f = open("pages/stat.html", "w")
