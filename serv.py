@@ -5,7 +5,6 @@ import _pickle as pkl
 import statistic as stat
 import tests
 
-WORK_DIRECTORY = r'/sdcard/user/tests/wrkdir'
 
 #-------net operating----------
 
@@ -17,7 +16,6 @@ def loadcontent(file):
     'index.html' in this directory.
     if file does not exist, throws exceprion
     '''
-    os.chdir(WORK_DIRECTORY)
     if os.path.isfile(file):
         fi=open(file, 'rb')
     else:
@@ -119,8 +117,6 @@ connection: close
 
 '''========CODE========='''
 def run():
-	os.chdir(WORK_DIRECTORY)
-	
 	print(tests.getQwsts())
 	#print(stat.getLastTestRes('Name'))
 	
