@@ -6,6 +6,11 @@ import statistic as stat
 import tests
 
 
+def log(text):
+    f = open('log.txt', 'a')
+    f.write(text)
+    f.close()
+
 #-------net operating----------
 
 def loadcontent(file):
@@ -119,7 +124,7 @@ connection: close
 def run():
 	print(tests.getQwsts())
 	#print(stat.getLastTestRes('Name'))
-	
+	log('=======START=======')
 	sock = socket.socket()
 	sock.bind(('', 8080))
 	
@@ -127,6 +132,7 @@ def run():
 	  print("server is working")
 	  sock.listen(2)
 	  conn, addr = sock.accept()
+	  log('connected:'+ str(addr))
 	
 	  print ('connected:', addr)
 	
@@ -135,12 +141,15 @@ def run():
 	  #ddata=data.decode('utf-8')
 	
 	  ddata = getData(conn)
+	  log('data:'+ddata)
 	  #warning: next expression isn't good
 	  if 0 <= ddata.find('exit'):
 	    print('exit')
+	    log('======EXIT======')
 	    conn.close()
 	    break
 	  ans = createAnsw(ddata)
+	  log('ans='+str(ans))
 	  conn.sendall(ans)
 	
 	  print('page send, conn resetting...')
