@@ -8,7 +8,7 @@ import tests
 
 def log(text):
     f = open('log.txt', 'a')
-    f.write(text)
+    f.write(text+'\n')
     f.close()
 
 #-------net operating----------
@@ -57,7 +57,7 @@ def createAnsw(ddata):
   BAD_REQW='HTTP/1.1 502 BAD REQUEST'
 
 #  ddata=data.decode('utf-8')
-  if ddata.isspace():
+  if ddata.isspace() or ddata == '':
     print('data is empty')
     ans=BAD_REQW
     reqv=ans.encode('utf-8')
