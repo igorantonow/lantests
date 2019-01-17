@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<script type="text/javascript">
@@ -14,10 +14,10 @@
 	//alert(answs);
 	//alert(i);
 	
-	SendRequest("Post", "/resTest.py", answs, alert("sended"));
+	SendRequest("Post", "/resTest.py", answs, alert("отправлено"));
 	//SendRequest("Get", "getLastTestRes.py", "name="+name, alert("gg") );
 	ReadFile("getLastTestRes.py?name=" + name, "result");
-	document.getElementById("body").innerHTML+="<a href=\"/pages/stat.html\">All results</a>";
+	document.getElementById("body").innerHTML+="<a href=\"/pages/stat.html\">Все результаты</a>";
 	}
 	</script>
 	<script src="files/ajax.js" type="text/javascript"></script>
