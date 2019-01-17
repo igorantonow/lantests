@@ -1,4 +1,4 @@
-import socket
+﻿import socket
 import os
 import sys
 import _pickle as pkl
@@ -41,10 +41,14 @@ def getLastTestRes(name):
 def oformResTest(name):
     res = getLastTestRes(name)
     mistakes = [ i+1 for i in res[2] ]
-    text = "Congratulations! You have "+\
-           str(res[1]*100//len(tests.getAnsws()))+\
-           "% correct answers. Your mistakes:"+\
-           str(mistakes)
+    #text = "Congratulations! You have "+\
+    #       str(res[1]*100//len(tests.getAnsws()))+\
+    #       "% correct answers. Your mistakes:"+\
+    #       str(mistakes)
+    text = "Поздравляем! У Вас " +\
+             str(res[1]*100//len(tests.getAnsws()))+\
+             "% ответов верные. Ваши ошибки:"+\
+             str(mistakes)
     return text.encode("utf-8")
 
 def _printStat():
