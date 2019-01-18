@@ -55,7 +55,7 @@ def _printStat():
     stat = loadStat()
     for i in stat:
         print(i)
-        
+
 def createStatPage():
     f = open("files/stat.html")
     html = f.read()
@@ -69,10 +69,12 @@ def createStatPage():
         tr = item.format(name=i[0], right=i[1], wrong=mistakes)
         table += tr
     html = html.format(table = table)
+    if not os.path.isdir('pages'):
+        os.mkdir('pages')
     f = open("pages/stat.html", "w")
     f.write(html)
     f.close()
-        
+
 if __name__=="__main__":
     _printStat()
     createStatPage()
