@@ -74,7 +74,7 @@ def createAnsw(ddata):
 
     if (directory=='/resTest.py'):
       tests.checkTest(content)
-    ans = "HTTP/1.1 200 OK"
+    ans = "HTTP/1.1 200 OK\r\n"
     return ans.encode('utf-8')
 
   elif HTTPAction.upper() != 'GET':

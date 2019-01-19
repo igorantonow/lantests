@@ -84,3 +84,20 @@ def makeTest():
     outf.write(html)
     outf.close()
 
+def rewriteTest():
+    test = []
+    q=''
+    print('Welcome to test creator!')
+    print('To create a new test input question and true answer to it')
+    print('Please input "end" instead the question when test is done')
+    while q.lower() != 'end':
+        q = input('QUESTION:')
+        a = input('ANSWER')
+        test.append( ('std', q, a) )
+    saveTest(test)
+    print('Test saved!')
+
+
+if __name__=="__main__":
+    if 'y' == input('do you want to rewrite test?').lower():
+        rewriteTest()
