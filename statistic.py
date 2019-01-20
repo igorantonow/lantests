@@ -57,10 +57,10 @@ def _printStat():
         print(i)
 
 def createStatPage():
-    f = open("files/stat.html")
+    f = open("pages/files/stat.html")
     html = f.read()
     f.close()
-    f = open("files/statItem.html")
+    f = open("pages/files/statItem.html")
     item = f.read()
     f. close()
     table = ""

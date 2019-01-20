@@ -63,7 +63,7 @@ def makeTest():
     tfile = open('pages/files/pageEnd.html')
     END = tfile.read()
     tfile.close()
-    tfile = open('files/task.html')
+    tfile = open('pages/files/task.html')
     TASK = tfile.read()
     tfile.close()
 
