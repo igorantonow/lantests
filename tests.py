@@ -57,10 +57,10 @@ def checkTest(data):
     stat.addStatRec((name, points, errs))
 
 def makeTest():
-    tfile = open('files/pageHead.html')
+    tfile = open('pages/files/pageHead.html')
     HEAD= tfile.read()
     tfile.close()
-    tfile = open('files/pageEnd.html')
+    tfile = open('pages/files/pageEnd.html')
     END = tfile.read()
     tfile.close()
     tfile = open('files/task.html')
@@ -79,8 +79,9 @@ def makeTest():
         html += TASK.format(qwst=q, i=i)
     html+= END
     #f.close()
-
-    outf = open("out.html", "w")
+    if not os.path.isdir('pages'):
+        os.mkdir('pages')
+    outf = open("pages/out.html", "w")
     outf.write(html)
     outf.close()
 

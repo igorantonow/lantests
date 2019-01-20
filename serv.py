@@ -21,6 +21,7 @@ def loadcontent(file):
     'index.html' in this directory.
     if file does not exist, throws exceprion
     '''
+    file = os.path.join('pages/', file)
     if os.path.isfile(file):
         fi=open(file, 'rb')
     else:
