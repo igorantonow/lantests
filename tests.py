@@ -8,14 +8,14 @@ import serv
 #WORK_DIRECTORY = r'/sdcard/user/tests/wrkdir'
 
 def saveTest(tst):
-    f = open("test.pkl", 'wb')
+    f = open("test.pkl", 'wb', encoding='utf-8')
     pkl.dump(tst, f)
     f.close()
 
 def loadTest():
     if (not os.path.isfile("test.pkl")):
         saveDefaultTest()
-    f = open("test.pkl", "rb")
+    f = open("test.pkl", "rb", encoding='utf-8')
     test = pkl.load(f)
     f.close()
     return test
@@ -57,13 +57,13 @@ def checkTest(data):
     stat.addStatRec((name, points, errs))
 
 def makeTest():
-    tfile = open('pages/files/pageHead.html')
+    tfile = open('pages/files/pageHead.html', encoding='utf-8')
     HEAD= tfile.read()
     tfile.close()
-    tfile = open('pages/files/pageEnd.html')
+    tfile = open('pages/files/pageEnd.html', encoding='utf-8')
     END = tfile.read()
     tfile.close()
-    tfile = open('pages/files/task.html')
+    tfile = open('pages/files/task.html', encoding='utf-8')
     TASK = tfile.read()
     tfile.close()
 
@@ -81,7 +81,7 @@ def makeTest():
     #f.close()
     if not os.path.isdir('pages'):
         os.mkdir('pages')
-    outf = open("pages/out.html", "w")
+    outf = open("pages/out.html", "w", encoding='utf-8')
     outf.write(html)
     outf.close()
 

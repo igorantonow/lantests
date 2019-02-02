@@ -23,11 +23,11 @@ def loadcontent(file):
     '''
     file = os.path.join('pages/', file)
     if os.path.isfile(file):
-        fi=open(file, 'rb')
+        fi=open(file, 'rb', encoding='utf-8')
     else:
         try:
             path=os.path.join(file, 'index.html')
-            fi=open(path, 'rb')
+            fi=open(path, 'rb', encoding='utf-8')
         except Exception as e:
             raise e
     cont=fi.read()

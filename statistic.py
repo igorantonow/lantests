@@ -57,10 +57,10 @@ def _printStat():
         print(i)
 
 def createStatPage():
-    f = open("pages/files/stat.html")
+    f = open("pages/files/stat.html", encoding='utf-8')
     html = f.read()
     f.close()
-    f = open("pages/files/statItem.html")
+    f = open("pages/files/statItem.html", encoding='utf-8')
     item = f.read()
     f. close()
     table = ""
@@ -71,7 +71,7 @@ def createStatPage():
     html = html.format(table = table)
     if not os.path.isdir('pages'):
         os.mkdir('pages')
-    f = open("pages/stat.html", "w")
+    f = open("pages/stat.html", "w", encoding='utf-8')
     f.write(html)
     f.close()
 
