@@ -36,10 +36,13 @@ def getLastTestRes(name):
     for record in stat:
         if record[0] == name:
             return record
-    raise ValueError("cannot find records about "+name)
+    return ('err', -1, [-2])
+    #raise ValueError("cannot find records about "+name)
 
 def oformResTest(name):
     res = getLastTestRes(name)
+    if res[1] < 0:
+        return 'вы можете найти результаты по ссылке:'.encode('utf-8')
     mistakes = [ i+1 for i in res[2] ]
     #text = "Congratulations! You have "+\
     #       str(res[1]*100//len(tests.getAnsws()))+\
