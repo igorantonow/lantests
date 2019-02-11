@@ -8,14 +8,14 @@ import serv
 #WORK_DIRECTORY = r'/sdcard/user/tests/wrkdir'
 
 def saveTest(tst):
-    f = open("test.pkl", 'wb', encoding='utf-8')
+    f = open("test.pkl", 'wb')
     pkl.dump(tst, f)
     f.close()
 
 def loadTest():
     if (not os.path.isfile("test.pkl")):
         saveDefaultTest()
-    f = open("test.pkl", "rb", encoding='utf-8')
+    f = open("test.pkl", "rb")
     test = pkl.load(f)
     f.close()
     return test
