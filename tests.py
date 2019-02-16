@@ -91,10 +91,11 @@ def rewriteTest():
     print('Welcome to test creator!')
     print('To create a new test input question and true answer to it')
     print('Please input "end" instead the question when test is done')
+    q = input('QUESTION:')
     while q.lower() != 'end':
-        q = input('QUESTION:')
         a = input('ANSWER')
         test.append( ('std', q, a) )
+        q = input('QUESTION:')
     saveTest(test)
     print('Test saved!')
 
