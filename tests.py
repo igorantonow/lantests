@@ -93,13 +93,13 @@ def rewriteTest():
     print('Please input "end" instead the question when test is done')
     q = input('QUESTION:')
     while q.lower() != 'end':
-        a = input('ANSWER')
+        a = input('ANSWER: ')
         test.append( ('std', q, a) )
-        q = input('QUESTION:')
+        q = input('QUESTION: ')
     saveTest(test)
     print('Test saved!')
 
 
 if __name__=="__main__":
-    if 'y' == input('do you want to rewrite test?').lower():
+    if 'y' == input('do you want to rewrite test?(y/n)').lower():
         rewriteTest()
