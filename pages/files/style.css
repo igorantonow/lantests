@@ -1,1 +1,10 @@
-﻿body { background-color: gray}
+﻿body { background-color: #eee}
+.task {
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 0 5px 5px;
+}
+
+input{
+	
+}
