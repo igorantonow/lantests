@@ -2,6 +2,7 @@ import socket
 import os
 import sys
 import _pickle as pkl
+import mimetypes
 import statistic as stat
 import tests
 
@@ -47,7 +48,6 @@ def getData(sock):
   '''
 
   return data.decode('utf-8')
-
 
 def createAnsw(ddata):
   '''
@@ -108,8 +108,7 @@ def createAnsw(ddata):
   else:
     ans='''HTTP/1.1 200 OK
 charset: utf-8
-Content-type: text/html;'''
-   #TODO: get really content type
+Content-type:'''+mimetypes.guess_type(file)[0]+';'
     ans+='''
 Content-Length: '''+str(len(content)) + \
    '''
