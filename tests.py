@@ -2,6 +2,7 @@ import socket
 import os
 import sys
 import _pickle as pkl
+import random
 import statistic as stat
 import serv
 
@@ -67,16 +68,17 @@ def makeTest():
     TASK = tfile.read()
     tfile.close()
 
-    #f = open('test.t')
     #TODO: choice test
     qwsts = getQwsts()
     print("generating test file")
     html = HEAD
-    isQwst = False
-    i=0
-    for q in qwsts:
-        i += 1
-        html += TASK.format(qwst=q, i=i)
+    l = list(range(len(qwsts)))
+    random.shuffle(l)
+    fnum=0
+    for i in l:
+        fnum+=1
+        q = qwsts[i]
+        html += TASK.format(qwst=q, i=i, fnum=fnum)
     html+= END
     #f.close()
     if not os.path.isdir('pages'):

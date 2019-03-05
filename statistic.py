@@ -50,8 +50,9 @@ def oformResTest(name):
     #       str(mistakes)
     text = "Поздравляем! У Вас " +\
              str(res[1]*100//len(tests.getAnsws()))+\
-             "% ответов верные. Ваши ошибки:"+\
-             str(mistakes)
+             "% ответов верные."# Ваши ошибки:"+\
+    #         str(mistakes)
+    #TODO: indicate mistakes
     return text.encode("utf-8")
 
 def _printStat():
