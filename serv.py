@@ -86,13 +86,14 @@ def createAnsw(ddata):
     return reqv
 
   file=ddata.partition(' HTTP/1.1')[0][5:]
+  return createGetAnsw(file)
+  
 
+def createGetAnsw(file):
   if file == 'test.py':
       tests.makeTest()
       file='out.html'
   if file.count("getLastTestRes")>0:
-      #content = str(getLastTestRes(file.split("=")[1]))
-      #content = content.encode('utf-8')
       content = stat.oformResTest(file.split("=")[1])
   else:
       content = None
@@ -103,19 +104,13 @@ def createAnsw(ddata):
       content=loadcontent(file)
   except FileNotFoundError as e:
     print(e)
-    ans='''HTTP/1.1 404 NOT FOUND'''
+    ans='HTTP/1.1 404 NOT FOUND'
     reqv=ans.encode('utf-8')
   else:
-    ans='''HTTP/1.1 200 OK
-charset: utf-8
-Content-type:'''+mimetypes.guess_type(file)[0]+';'
-    ans+='''
-Content-Length: '''+str(len(content)) + \
-   '''
-Content-Language: ru
-connection: close
-
-'''
+    ans='HTTP/1.1 200 OK\r\ncharset:'+ str(mimetypes.guess_type(file)[1])
+    ans+='\r\nContent-type:'''+str(mimetypes.guess_type(file)[0])+';'
+    ans+='\r\nContent-Length: '''+str(len(content))
+    ans+='\r\nContent-Language: ru\r\nconnection: close\r\n\r\n'
     reqv = ans.encode('utf-8') + content
   return reqv
 
