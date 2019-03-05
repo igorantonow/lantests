@@ -1,11 +1,30 @@
-﻿body { background-color: #eee}
+﻿body { background-color: #ddd}
 .task {
 	background-color: white;
 	border: 1px solid #ccc;
 	padding: 0 5px 5px;
 }
 
-table {
+input{
+	//background-color: #fc7;
+}
+
+a.button8 {
+  display: inline-block;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+} 
+a.button8:hover { background: #bfb }
+a.button8:active { background: white }
+
+/*table {
 font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 font-size: 14px;
 border-collapse: collapse;
@@ -13,7 +32,7 @@ text-align: center;
 }
 th, td:first-child {
 background: #AFCDE7;
-color: white;
+color: black;
 padding: 10px 20px;
 }
 th, td {
@@ -26,4 +45,32 @@ background: #D8E6F3;
 }
 th:first-child, td:first-child {
 text-align: left;
+}*/
+
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  border-collapse: collapse;
+  color: #686461;
+}
+caption {
+  padding: 10px;
+  color: white;
+  background: #8FD4C1;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+}
+th {
+  border-bottom: 3px solid #B9B29F;
+  padding: 10px;
+  text-align: left;
+}
+td {
+  padding: 10px;
+}
+tr:nth-child(odd) {
+  background: white;
+}
+tr:nth-child(even) {
+  background: #E8E6D1;
 }
