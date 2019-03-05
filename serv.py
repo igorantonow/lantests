@@ -90,6 +90,9 @@ def createAnsw(ddata):
   
 
 def createGetAnsw(file):
+  if file == '_newStat.html':
+      stat.createStatPage()
+      file='stat.html'
   if file == 'test.py':
       tests.makeTest()
       file='out.html'
