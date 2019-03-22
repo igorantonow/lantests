@@ -5,6 +5,7 @@ import _pickle as pkl
 import random
 import statistic as stat
 import serv
+import sessions
 
 #WORK_DIRECTORY = r'/sdcard/user/tests/wrkdir'
 
@@ -71,7 +72,8 @@ def makeTest():
     #TODO: choice test
     qwsts = getQwsts()
     print("generating test file")
-    html = HEAD
+    sessionID = sessions.newSession()
+    html = HEAD.replace('{sessID}', str(1))
     l = list(range(len(qwsts)))
     random.shuffle(l)
     fnum=0
