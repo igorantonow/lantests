@@ -47,6 +47,7 @@ def checkTest(data):
     #print("cT")
     result = data.split("\n")
     name = result.pop(0)
+    sessID = result.pop(0)
     trAns = getAnsws()
     errs=[]; points =0
     if len(result) != len(trAns):
@@ -56,7 +57,8 @@ def checkTest(data):
             points +=1
         else:
             errs.append(i)
-    stat.addStatRec((name, points, errs))
+    stat.addStatRec((name, points, errs, sessID))
+    print(name, sessID, points, errs);
 
 def makeTest():
     tfile = open('pages/files/pageHead.html', encoding='utf-8')

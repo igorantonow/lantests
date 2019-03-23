@@ -7,6 +7,7 @@
 	//alert("fhf");
 	name = document.getElementById("name").value;
 	answs = name;
+        answs += '\n' + sessionID;
 		for(i=0; true; i++){
 		if ( document.getElementById("task"+i) == null){break;}
 		ans = document.getElementById("task"+i).value;
